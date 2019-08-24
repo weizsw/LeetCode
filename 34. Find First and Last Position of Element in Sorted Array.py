@@ -5,25 +5,24 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-
-        def searchLow(nums, target):
-            low, high = 0, len(nums) - 1
-            while low <= high:
-                mid = (low + high) / 2
+        def binarySearchLeft(nums, target):
+            left, right = 0, len(nums) - 1
+            while left <= right:
+                mid = (left + right) / 2
                 if target > nums[mid]:
-                    low = mid + 1
+                    left = mid + 1
                 else:
-                    high = mid - 1
-            return low
-        def searchHigh(nums,target):
-            low , high = 0 ,len(nums) - 1
-            while low <= high:
-                mid = (low + high) / 2
+                    right = mid - 1
+            return left
+        def binarySearchRight(nums, target):
+            left, right = 0, len(nums) - 1
+            while left <= right:
+                mid = (left + right) / 2
                 if target >= nums[mid]:
-                    low = mid + 1
+                    left = mid + 1
                 else:
-                    high = mid - 1
-            return high
-        low, high = searchLow(nums, target), searchHigh(nums, target)
-        return (low, high) if low <= high else [-1, -1]
+                    right = mid - 1
+            return right
 
+        left, right = binarySearchLeft(nums, target), binarySearchRight(nums, target)
+        return (left, right) if left <= right else [-1,-1]
